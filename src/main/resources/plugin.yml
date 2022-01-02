@@ -5,3 +5,7 @@ api-version: 1.18
 prefix: EonRanks
 authors: [ Squid ]
 description: Simple Ranks implementation for Eon Ranks
+
+commands:
+  ranks:
+    description: Shows the currently available ranks and their perks
