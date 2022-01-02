@@ -1,0 +1,7 @@
+name: EonRanks
+version: '${project.version}'
+main: com.mceon.eonranks.EonRanks
+api-version: 1.18
+prefix: EonRanks
+authors: [ Squid ]
+description: Simple Ranks implementation for Eon Ranks
