@@ -39,6 +39,8 @@ public class TestMetadata implements Listener {
         user.data().clear(NodeType.META.predicate(mn -> mn.getMetaKey().equals("level")));
         user.data().add(node);
 
+        luckPermsAPI.getUserManager().saveUser(user);
+
         CachedMetaData newMetaData = luckPermsAPI.getPlayerAdapter(Player.class).getMetaData(e.getPlayer());
         e.getPlayer().sendMessage("Your level is " + newMetaData.getMetaValue("level", Integer::parseInt).orElse(-1));
     }
