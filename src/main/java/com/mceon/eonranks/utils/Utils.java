@@ -8,6 +8,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -43,4 +46,9 @@ public class Utils {
         }
     }
 
+    public static double round(double balance, int places) {
+        BigDecimal bd = new BigDecimal(balance, MathContext.DECIMAL32);
+        bd = bd.setScale(places, RoundingMode.HALF_EVEN);
+        return bd.doubleValue();
+    }
 }

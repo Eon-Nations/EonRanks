@@ -4,8 +4,11 @@ main: com.mceon.eonranks.EonRanks
 api-version: 1.18
 prefix: EonRanks
 authors: [ Squid ]
+depend: [LuckPerms, Vault]
 description: Simple Ranks implementation for Eon Ranks
 
 commands:
   ranks:
     description: Shows the currently available ranks and their perks
+  rankup:
+    description: Rankup to the next rank
