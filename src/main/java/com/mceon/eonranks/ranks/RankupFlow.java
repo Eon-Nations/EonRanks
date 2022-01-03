@@ -75,9 +75,10 @@ public class RankupFlow implements CommandExecutor, Listener {
                     String command = "lp user " + p.getName() + " promote ranks";
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                     p.closeInventory();
+                    Ranks nextRank = Ranks.getNext(getPlayerRank(p));
                     Bukkit.getServer().sendMessage(getPrefix()
                             .append(Component.text(p.getName() + " has ranked up to " +
-                                    StringUtils.capitalize(getPlayerRank(p).name().toLowerCase()))));
+                                    StringUtils.capitalize(nextRank.name().toLowerCase()))));
                 }
                 // Declining to rankup
                 case RED_CONCRETE -> {
@@ -115,6 +116,7 @@ public class RankupFlow implements CommandExecutor, Listener {
         ImmutableContextSet contextSet = luckPermsAPI.getContextManager().getContext(user).orElseGet(luckPermsAPI.getContextManager()::getStaticContext);
         CachedMetaData cachedMetaData = user.getCachedData().getMetaData(QueryOptions.contextual(contextSet));
         String prefix = cachedMetaData.getPrefix();
+        if (prefix.equals("default")) prefix = "member";
         return Ranks.valueOf(prefix.toUpperCase());
     }
 
