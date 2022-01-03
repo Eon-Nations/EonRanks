@@ -26,12 +26,15 @@ public class TestMetadata implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
+        CachedMetaData metaData = luckPermsAPI.getPlayerAdapter(Player.class).getMetaData(e.getPlayer());
+        e.getPlayer().sendMessage("Your level is " + metaData.getMetaValue("level", Integer::parseInt).orElse(-1));
+
         User user = luckPermsAPI.getUserManager().getUser(e.getPlayer().getUniqueId());
         MetaNode node = MetaNode.builder("level", Integer.toString(1)).build();
         user.data().clear(NodeType.META.predicate(mn -> mn.getMetaKey().equals("level")));
         user.data().add(node);
 
-        CachedMetaData metaData = luckPermsAPI.getPlayerAdapter(Player.class).getMetaData(e.getPlayer());
-        e.getPlayer().sendMessage("Your level is " + metaData.getMetaValue("level", Integer::parseInt).orElse(-1));
+        CachedMetaData newMetaData = luckPermsAPI.getPlayerAdapter(Player.class).getMetaData(e.getPlayer());
+        e.getPlayer().sendMessage("Your level is " + newMetaData.getMetaValue("level", Integer::parseInt).orElse(-1));
     }
 }
