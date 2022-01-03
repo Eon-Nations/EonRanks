@@ -2,6 +2,7 @@ package com.mceon.eonranks.ranks;
 
 import com.mceon.eonranks.EonRanks;
 import com.mceon.eonranks.utils.Utils;
+import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.luckperms.api.LuckPerms;
@@ -65,6 +66,7 @@ public class RankupFlow implements CommandExecutor, Listener {
         if (e.getView().title().equals(Component.text("Rankup Menu").color(TextColor.color(0, 255, 0)))) {
             Player p = (Player) e.getWhoClicked();
             switch (e.getCurrentItem().getType()) {
+                // Accepting to rankup
                 case LIME_CONCRETE -> {
                     HashMap<Ranks, Integer> rankupMap = Ranks.getRankupMap();
                     double withdrawalAmount = rankupMap.get(getPlayerRank(p));
@@ -72,7 +74,12 @@ public class RankupFlow implements CommandExecutor, Listener {
                     // Promotion step
                     String command = "lp user " + p.getName() + " promote ranks";
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                    p.closeInventory();
+                    Bukkit.getServer().sendMessage(getPrefix()
+                            .append(Component.text(p.getName() + " has ranked up to " +
+                                    StringUtils.capitalize(getPlayerRank(p).name().toLowerCase()))));
                 }
+                // Declining to rankup
                 case RED_CONCRETE -> {
                     p.closeInventory();
                     p.sendMessage(getPrefix().append(Component.text("See you again soon!")));
@@ -99,7 +106,7 @@ public class RankupFlow implements CommandExecutor, Listener {
                         .color(lightBlue));
         Utils.createItem(inventory, Material.RED_CONCRETE, 1, 16,
                 Component.text("Deny").color(TextColor.color(255, 0, 0)));
-
+        Utils.makeDummySlots(inventory);
         return inventory;
     }
 

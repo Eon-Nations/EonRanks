@@ -2,7 +2,6 @@ package com.mceon.eonranks;
 
 import com.mceon.eonranks.ranks.RankMenuInteraction;
 import com.mceon.eonranks.ranks.RankupFlow;
-import com.mceon.eonranks.ranks.TestMetadata;
 import net.luckperms.api.LuckPerms;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -31,7 +30,6 @@ public final class EonRanks extends JavaPlugin {
     private void registerRanks() {
         new RankMenuInteraction(this);
         new RankupFlow(this, econ, luckPermsAPI);
-        new TestMetadata(this, luckPermsAPI);
     }
 
     private LuckPerms loadLuckPerms() {
