@@ -5,8 +5,6 @@ name: Continuous Integration
 # Controls when the workflow will run
 on:
   # Triggers the workflow on pull request events but only for the main branch
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
