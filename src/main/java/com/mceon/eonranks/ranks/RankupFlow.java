@@ -1,7 +1,6 @@
-package com.mceon.eonranks.commands;
+package com.mceon.eonranks.ranks;
 
 import com.mceon.eonranks.EonRanks;
-import com.mceon.eonranks.ranks.Ranks;
 import com.mceon.eonranks.utils.Utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
