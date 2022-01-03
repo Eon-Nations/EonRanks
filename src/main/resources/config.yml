@@ -1,0 +1,15 @@
+ranks:
+  - member
+  - traveler
+  - explorer
+  - ranger
+  - spaceman
+  - astronaut
+  - mythic
+  - gamer
+
+# Commands to run after the rankup
+explorer:
+  # Some Crate Plugin
+ranger:
+  -

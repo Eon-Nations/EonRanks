@@ -14,6 +14,7 @@ public final class EonRanks extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         luckPermsAPI = loadLuckPerms();
         if (!setupEconomy() ) {
             getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));

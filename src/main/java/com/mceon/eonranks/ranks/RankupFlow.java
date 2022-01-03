@@ -2,7 +2,6 @@ package com.mceon.eonranks.ranks;
 
 import com.mceon.eonranks.EonRanks;
 import com.mceon.eonranks.utils.Utils;
-import net.kyori.adventure.identity.Identity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.luckperms.api.LuckPerms;
@@ -49,7 +48,7 @@ public class RankupFlow implements CommandExecutor, Listener {
             HashMap<Ranks, Integer> rankupMap = Ranks.getRankupMap();
             Ranks playerRank = getPlayerRank(p);
 
-            if (rankupMap.get(playerRank) < balance) {
+            if (rankupMap.get(playerRank) <= balance) {
                 p.openInventory(getConfirmationInventory(playerRank));
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1, 1);
             } else {
